@@ -64,4 +64,19 @@ page-grid {
             display: table-cell;
         }
     }
+
+    @media screen and (min-width: 768px){
+        [pull-md-5] {
+            right: 39.66667%;
+        }
+
+        .exportCsvBtn{
+            left: 40.5%;
+        }
+        .gridHeading{
+            font-size: 16px;
+            font-weight: 600;
+        }
+    }
+
 }

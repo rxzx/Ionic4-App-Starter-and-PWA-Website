@@ -12,11 +12,16 @@
   <ion-grid>
     <ion-row>
       <ion-col col-12 col-md>
-        <p-table 
-          [columns]="cols" 
-          [value]="cars" 
-          [responsive]="true"
-          >
+        <p-table #dt [columns]="cols" [value]="cars" [responsive]="true">
+          <ng-template pTemplate="caption">
+            <ion-col col-md-3 pull-md-5 class="gridHeading">
+                <ion-icon name="list-box"></ion-icon> &nbsp; Grid Data
+            </ion-col>
+              
+            <ion-col col-md-3 push-md-5 class="exportCsvBtn">
+              <button ion-button small (tap)="dt.exportCSV()"><ion-icon name="download"></ion-icon> &nbsp; Export as CSV</button>
+            </ion-col>
+          </ng-template>
           <ng-template pTemplate="header" let-columns>
             <tr>
               <th *ngFor="let col of columns">
@@ -27,9 +32,13 @@
           <ng-template pTemplate="body" let-rowData let-columns="columns">
             <tr>
               <td *ngFor="let col of columns">
+                <span class="ui-column-title">{{col.header}}</span>
                 {{rowData[col.field]}}
               </td>
             </tr>
+          </ng-template>
+          <ng-template pTemplate="summary">
+            There are {{cars?.length}} cars
           </ng-template>
         </p-table>
       </ion-col>
