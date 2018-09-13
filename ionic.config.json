@@ -1,0 +1,7 @@
+{
+  "name": "Ionic.StarterApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
