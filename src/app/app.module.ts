@@ -9,6 +9,9 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { GridPage } from '../pages/grid/grid';
+import { HttpServiceProvider } from '../providers/http-service/http-service';
+import { UtilServiceProvider } from '../providers/util-service/util-service';
+import { StorageServiceProvider } from '../providers/storage-service/storage-service';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { GridPage } from '../pages/grid/grid';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    HttpServiceProvider,
+    UtilServiceProvider,
+    StorageServiceProvider
   ]
 })
 export class AppModule {}
