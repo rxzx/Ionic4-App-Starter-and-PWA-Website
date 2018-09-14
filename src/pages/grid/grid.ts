@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HttpServiceProvider } from '../../providers/http-service';
 
 /**
  * Generated class for the GridPage page.
@@ -14,36 +15,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'grid.html',
 })
 export class GridPage {
-  cars: any[];
-  cols: any[];
+  public data: any[];
+  public cols: any[];
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    public http: HttpServiceProvider
   ) {
+    this.data = [];
   }
 
   ionViewDidLoad() {
     this.cols = [
-      { field: 'vin', header: 'Vin' },
-      { field: 'year', header: 'Year' },
-      { field: 'brand', header: 'Brand' },
-      { field: 'color', header: 'Color' }
+      { field: 'id', header: 'Id' },
+      { field: 'name', header: 'Name' },
+      { field: 'province', header: 'Province' },
+      { field: 'province', header: 'Province' },
     ];
 
-    this.cars = [
-      {
-       'vin':'123',
-       'year':'123',
-       'brand':'123',
-       'color':'color', 
-      },
-      {
-        'vin':'123',
-        'year':'123',
-        'brand':'123',
-        'color':'color', 
-       },
-    ];
+    
+    this.http.getData().subscribe( (response:any) => {
+      console.log(response);
+      this.data = response.city;
+    });
     console.log('ionViewDidLoad GridPage');
   }
 

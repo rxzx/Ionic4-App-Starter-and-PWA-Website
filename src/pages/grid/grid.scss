@@ -73,10 +73,7 @@ page-grid {
         .exportCsvBtn{
             left: 40.5%;
         }
-        .gridHeading{
-            font-size: 16px;
-            font-weight: 600;
-        }
+        .gridHeading{   float:left;text-align: left;font-size: 16px;font-weight: 600;}
     }
 
 }
