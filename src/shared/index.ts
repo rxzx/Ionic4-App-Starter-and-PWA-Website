@@ -4,7 +4,7 @@ export * from './models/user';
 
 
 //Enums
-export * from './enums/enums';
+export * from './enums';
 export * from './enums/storagekey';
 
 

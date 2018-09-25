@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HttpServiceProvider } from '../../providers/http-service';
+import { NavController, NavParams } from 'ionic-angular';
+import { HttpServiceProvider } from '../../../providers/http-service';
+import { AuthServiceProvider } from '../../../providers/auth-service';
 
 /**
  * Generated class for the GridPage page.
@@ -9,7 +10,6 @@ import { HttpServiceProvider } from '../../providers/http-service';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-grid',
   templateUrl: 'grid.html',
@@ -20,7 +20,8 @@ export class GridPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public http: HttpServiceProvider
+    public http: HttpServiceProvider,
+    public authService: AuthServiceProvider
   ) {
     this.data = [];
   }
@@ -33,12 +34,16 @@ export class GridPage {
       { field: 'province', header: 'Province' },
     ];
 
-    
-    this.http.getData().subscribe( (response:any) => {
-      console.log(response);
+    this.http.getData().subscribe((response: any) => {
+      // console.log(response);
       this.data = response.city;
     });
-    console.log('ionViewDidLoad GridPage');
+
+
+  }
+
+  ionViewCanEnter() {
+    return this.authService.authenticated();
   }
 
 }

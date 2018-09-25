@@ -1,19 +1,53 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ToastController, LoadingController, AlertController } from 'ionic-angular';
 
-/*
-  Generated class for the UtilServiceProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class UtilServiceProvider {
+  public loader: any;
 
   constructor(
-    public http: HttpClient
+    private toastCtrl: ToastController,
+    public loadingCtrl: LoadingController,
+    private alertCtrl: AlertController
   ) {
-    console.log('Hello UtilServiceProvider Provider');
+    this.loader = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+  }
+
+  showToast(msg: string) {
+    return this.toastCtrl.create({ message: msg, duration: 3000, position: 'top' }).present();
+  }
+
+  showLoader() {
+    return this.loader.present();
+  }
+
+  hideLoader() {
+    return this.loader.dismissAll();
+  }
+
+  confirm(title, message) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      message: message,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Buy',
+          handler: () => {
+            console.log('Buy clicked');
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
 }

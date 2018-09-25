@@ -2,10 +2,11 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { GridPage } from '../pages/private/grid/grid';
+import { HomePage } from '../pages/private/home/home';
+import { ListPage } from '../pages/private/list/list';
+import { LoginPage } from '../pages/public/login/login';
 
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
-import { GridPage } from '../pages/grid/grid';
 
 @Component({
   templateUrl: 'app.html'
@@ -13,7 +14,7 @@ import { GridPage } from '../pages/grid/grid';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  public rootPage: any = GridPage;
+  public rootPage: any = LoginPage;
 
   public pages: Array<{ title: string, component: any }>;
 

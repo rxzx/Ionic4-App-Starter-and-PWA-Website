@@ -1,0 +1,20 @@
+<ion-content padding>
+
+  <div style="margin: 33% auto;">
+    <h3 ion-text color="primary">Login System</h3>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <ion-list>
+        <ion-item>
+          <ion-label color="primary" floating>Username <span ion-text color="danger">*</span></ion-label>
+          <ion-input type="text" [formControl]="loginForm.controls['userName']"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" floating>Password <span ion-text color="danger">*</span></ion-label>
+          <ion-input type="password" [formControl]="loginForm.controls['password']"></ion-input>
+        </ion-item>
+      </ion-list>
+      <button ion-button>Login</button>
+    </form>
+  </div>
+
+</ion-content>

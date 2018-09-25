@@ -6,18 +6,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
-import { GridPage } from '../pages/grid/grid';
-
 import { HttpServiceProvider } from '../providers/http-service';
 import { UtilServiceProvider } from '../providers/util-service';
 import { StorageServiceProvider } from '../providers/storage-service';
+import { AuthServiceProvider } from '../providers/auth-service';
+
+import { MyApp } from './app.component';
+import { HomePage } from '../pages/private/home/home';
+import { ListPage } from '../pages/private/list/list';
+import { GridPage } from '../pages/private/grid/grid';
+import { LoginPage } from '../pages/public/login/login';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     MyApp,
+    LoginPage,
     HomePage,
     ListPage,
     GridPage
@@ -26,11 +30,13 @@ import { StorageServiceProvider } from '../providers/storage-service';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     TableModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    LoginPage,
     HomePage,
     ListPage,
     GridPage
@@ -41,7 +47,8 @@ import { StorageServiceProvider } from '../providers/storage-service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HttpServiceProvider,
     UtilServiceProvider,
-    StorageServiceProvider
+    StorageServiceProvider,
+    AuthServiceProvider
   ]
 })
 export class AppModule {}
