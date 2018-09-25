@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UtilServiceProvider } from '../../../providers/util-service';
+import { HomePage } from '../../private/home/home';
 
 /**
  * Generated class for the LoginPage page.
@@ -19,7 +21,8 @@ export class LoginPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    public util: UtilServiceProvider
   ) {
     this.loginForm = this.formBuilder.group({
       userName:['',Validators.required],
@@ -33,9 +36,14 @@ export class LoginPage {
 
   login(){
     if(this.loginForm.valid){
+      this.util.showLoader();
       console.log(this.loginForm.value);
+      setTimeout( () =>{
+        this.navCtrl.setRoot(HomePage)
+        this.util.hideLoader();
+      },500);
     }else{
-      
+      this.util.showToast("Invalid Login");
     }
   }
 
