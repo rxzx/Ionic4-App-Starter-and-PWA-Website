@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { TableModule} from 'primeng/table';
+import { TableModule } from 'primeng/table';
 import { HttpClientModule } from '@angular/common/http';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -17,6 +17,7 @@ import { ListPage } from '../pages/private/list/list';
 import { GridPage } from '../pages/private/grid/grid';
 import { LoginPage } from '../pages/public/login/login';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ApiModule } from './api.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     IonicModule.forRoot(MyApp),
     TableModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    // ApiModule.forRoot('https://test.com/'),//mobile 
+    ApiModule.forRoot('/'), //web 
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -44,11 +47,11 @@ import { ReactiveFormsModule } from '@angular/forms';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     HttpServiceProvider,
     UtilServiceProvider,
     StorageServiceProvider,
     AuthServiceProvider
   ]
 })
-export class AppModule {}
+export class AppModule { }
