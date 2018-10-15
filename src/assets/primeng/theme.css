@@ -1166,8 +1166,12 @@ p-togglebutton.ng-dirty.ng-invalid .ui-button {
 
 
 
-page-distributor .uiGridCss .ui-table-scrollable-body{max-height: calc(100vh - 200px) !important;}
+/***************************************************** Font icons ***********************************/
 
+
+/**************************************************** Font icons end ****************************/
+
+page-distributor .uiGridCss .ui-table-scrollable-body{max-height: calc(100vh - 200px) !important;}
 
 
 
