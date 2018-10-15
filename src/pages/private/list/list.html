@@ -8,43 +8,51 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-grid>
-    <ion-row>
-      <ion-col col-12 col-md>
-        <p-table #dt [columns]="cols" [value]="data" [responsive]="true" [scrollable]="true" [paginator]="true" [rows]="19"
-          scrollHeight="450px">
-          <ng-template pTemplate="caption">
-            <ion-col col-md-9 class="gridHeading">
-              <ion-icon name="list-box"></ion-icon> &nbsp; Grid Data
-            </ion-col>
+  <div class="uiGridCss">
+    <p-table #dt [columns]="cols" [value]="data" [responsive]="true" [scrollable]="true" [paginator]="true" [rows]="19"
+      scrollHeight="450px">
+      <ng-template pTemplate="caption">
 
-            <ion-col col-md-3 style="float:right;">
-              <button ion-button small (click)="dt.exportCSV()">
-                <ion-icon name="download"></ion-icon> &nbsp; Export as CSV
-              </button>
-            </ion-col>
-            <div style="clear:both;"></div>
-          </ng-template>
-          <ng-template pTemplate="header" let-columns>
-            <tr>
-              <th *ngFor="let col of columns">
-                {{col.header}}
-              </th>
-            </tr>
-          </ng-template>
-          <ng-template pTemplate="body" let-rowData let-columns="columns">
-            <tr>
-              <td *ngFor="let col of columns">
-                <span class="ui-column-title">{{col.header}}</span>
-                {{rowData[col.field]}}
-              </td>
-            </tr>
-          </ng-template>
-          <ng-template pTemplate="summary">
-            {{data?.length}} Cities
-          </ng-template>
-        </p-table>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+        <div class="gridHeader">
+          <div class="clear"></div>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col text-center text-md-right>
+                <button ion-button (click)="openDistributorForm()">Add Row</button>
+                <button ion-button (click)="dt.exportCSV()">Export</button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th *ngFor="let col of columns">
+            {{col.header}}
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+          <td *ngFor="let col of columns">
+            <span class="ui-column-title">{{col.header}}</span>
+            {{rowData[col.field]}}
+          </td>
+          <td class="actionColText">
+            <a href="javascript:;" class="editBtn">
+              <ion-icon name="create"></ion-icon>
+            </a>
+            <a href="javascript:;" class="editBtn">
+              <ion-icon name="add"></ion-icon>
+            </a>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="summary">
+        {{data?.length}} entries
+      </ng-template>
+    </p-table>
+  </div>
+
 </ion-content>
