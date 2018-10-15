@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UtilServiceProvider } from '../../../providers/util-service';
-import { HomePage } from '../../private/home/home';
+import { DashboardPage } from '../../private/dashboard/dashboard';
 
 /**
  * Generated class for the LoginPage page.
@@ -39,7 +39,7 @@ export class LoginPage {
       this.util.showLoader();
       console.log(this.loginForm.value);
       setTimeout( () =>{
-        this.navCtrl.setRoot(HomePage)
+        this.navCtrl.setRoot(DashboardPage);
         this.util.hideLoader();
       },500);
     }else{

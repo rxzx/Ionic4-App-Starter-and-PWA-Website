@@ -18,7 +18,8 @@ export class HttpServiceProvider {
   }
 
   getData() {
-    return this.http.get(`${this._APIHOST}/assets/data/data.json`);
+    // return this.http.get(`${this._APIHOST}/assets/data/data.json`);
+    return this.http.get(`../../assets/data/data.json`);
   }
 
 

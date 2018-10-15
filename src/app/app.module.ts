@@ -12,20 +12,18 @@ import { StorageServiceProvider } from '../providers/storage-service';
 import { AuthServiceProvider } from '../providers/auth-service';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/private/home/home';
-import { ListPage } from '../pages/private/list/list';
-import { GridPage } from '../pages/private/grid/grid';
 import { LoginPage } from '../pages/public/login/login';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ApiModule } from './api.module';
+import { DashboardPage } from '../pages/private/dashboard/dashboard';
+import { ListPage } from '../pages/private/list/list';
 
 @NgModule({
   declarations: [
     MyApp,
     LoginPage,
-    HomePage,
-    ListPage,
-    GridPage
+    DashboardPage,
+    ListPage
   ],
   imports: [
     BrowserModule,
@@ -40,9 +38,8 @@ import { ApiModule } from './api.module';
   entryComponents: [
     MyApp,
     LoginPage,
-    HomePage,
-    ListPage,
-    GridPage
+    DashboardPage,
+    ListPage
   ],
   providers: [
     StatusBar,

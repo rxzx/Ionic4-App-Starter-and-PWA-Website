@@ -7,17 +7,44 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-start></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-end>
-        {{item.note}}
-      </div>
-    </button>
-  </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 col-md>
+        <p-table #dt [columns]="cols" [value]="data" [responsive]="true" [scrollable]="true" [paginator]="true" [rows]="19"
+          scrollHeight="450px">
+          <ng-template pTemplate="caption">
+            <ion-col col-md-9 class="gridHeading">
+              <ion-icon name="list-box"></ion-icon> &nbsp; Grid Data
+            </ion-col>
+
+            <ion-col col-md-3 style="float:right;">
+              <button ion-button small (click)="dt.exportCSV()">
+                <ion-icon name="download"></ion-icon> &nbsp; Export as CSV
+              </button>
+            </ion-col>
+            <div style="clear:both;"></div>
+          </ng-template>
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns">
+                {{col.header}}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+              <td *ngFor="let col of columns">
+                <span class="ui-column-title">{{col.header}}</span>
+                {{rowData[col.field]}}
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="summary">
+            {{data?.length}} Cities
+          </ng-template>
+        </p-table>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
