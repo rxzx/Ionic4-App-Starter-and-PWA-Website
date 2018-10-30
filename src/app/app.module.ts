@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { TableModule } from 'primeng/table';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ApiModule } from './api.module';
 import { DashboardPage } from '../pages/private/dashboard/dashboard';
 import { ListPage } from '../pages/private/list/list';
+import { AppInterceptorProvider } from './app-interceptor';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ListPage } from '../pages/private/list/list';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+    { provide: HTTP_INTERCEPTORS, useClass: AppInterceptorProvider, multi: true },
     HttpServiceProvider,
     UtilServiceProvider,
     StorageServiceProvider,

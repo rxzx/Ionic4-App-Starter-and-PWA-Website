@@ -1,7 +1,10 @@
 <ion-menu [content]="content" id="menuleft">
   <ion-header>
     <ion-toolbar>
-      <ion-title><img src="../assets/imgs/logo.png"></ion-title>
+      <ion-title text-center>
+        <!-- <img src="../assets/imgs/logo.png"> -->
+        <span color="primary">RxZx</span>
+      </ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -21,6 +24,33 @@
     </button>
   </ion-footer>
 
+</ion-menu>
+
+<ion-menu [content]="content" id="menuright" side="right">
+  <ion-header class="catHead">
+    <ion-toolbar>
+      <ion-title>
+        <ion-avatar class="totalTickerCount">
+          <!--<img src="../assets/imgs/logo.png" class="avatar">-->
+          <span>RS</span>
+        </ion-avatar>
+        <h2 color="primary" text-center>Raza Sultan</h2>
+        <h5 color="primary" text-center>
+          <ion-icon name="pin"></ion-icon> &nbsp; Karachi, Pakistan
+        </h5>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item-divider color="light">
+        <ion-icon name="people"></ion-icon> &nbsp; Team (16 Memebers)
+      </ion-item-divider>
+      <button ion-item menuClose="menuright">Test Sde1</button>
+      <button ion-item menuClose="menuright">Test Sde2</button>
+      <button ion-item menuClose="menuright">Test Sde3</button>
+    </ion-list>
+  </ion-content>
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->

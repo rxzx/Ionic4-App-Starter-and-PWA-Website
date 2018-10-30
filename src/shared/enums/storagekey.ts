@@ -1,5 +1,6 @@
 
 export enum StorageKey{
-    User = '0'
+    User = '0',
+    AccessToken = '1'
 
 }

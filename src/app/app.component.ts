@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/public/login/login';
 import { DashboardPage } from '../pages/private/dashboard/dashboard';
 import { ListPage } from '../pages/private/list/list';
+import { StorageServiceProvider } from '../providers/storage-service';
+import { StorageKey } from '../shared';
 
 
 @Component({
@@ -20,8 +22,10 @@ export class MyApp {
   constructor(
     public platform: Platform,
     public statusBar: StatusBar,
-    public splashScreen: SplashScreen
+    public splashScreen: SplashScreen,
+    public storage:StorageServiceProvider
   ) {
+    this.storage.set(StorageKey.AccessToken,"xbxncbxncbxncbnxbcxnbncbxcdhjhdh")
     this.initializeApp();
 
     // used for an example of ngFor and navigation

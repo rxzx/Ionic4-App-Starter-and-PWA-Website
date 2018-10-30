@@ -1,3 +1,4 @@
+import { StorageKey } from './../shared/enums/storagekey';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -11,9 +12,27 @@ import { Injectable } from '@angular/core';
 export class StorageServiceProvider {
 
   constructor(
-    
+
   ) {
     console.log('Hello StorageServiceProvider Provider');
   }
 
+
+  get(key: StorageKey) {
+    return JSON.parse(window.localStorage.getItem(key));
+  }
+
+  set(key:StorageKey, value) {
+    return window.localStorage.setItem(key, JSON.stringify(value));
+  }
+
+  remove(key:StorageKey) {
+    window.localStorage.removeItem(key);
+    return true;
+  }
+
+  removeAll() {
+    window.localStorage.clear();
+    return true;
+  }
 }
