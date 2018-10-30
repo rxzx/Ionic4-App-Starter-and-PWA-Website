@@ -14,7 +14,7 @@ export class StorageServiceProvider {
   constructor(
 
   ) {
-    console.log('Hello StorageServiceProvider Provider');
+
   }
 
 

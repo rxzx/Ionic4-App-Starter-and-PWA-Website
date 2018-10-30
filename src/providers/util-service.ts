@@ -15,8 +15,12 @@ export class UtilServiceProvider {
     });
   }
 
+  toast(msg: string) {
+    return this.toastCtrl.create({ message: msg, duration: 3000, position: 'bottom' }).present();
+  }
+
   showToast(msg: string) {
-    return this.toastCtrl.create({ message: msg, duration: 3000, position: 'top' }).present();
+    return this.toastCtrl.create({ message: msg, duration: 3000, position: 'bottom' }).present();
   }
 
   showLoader() {
