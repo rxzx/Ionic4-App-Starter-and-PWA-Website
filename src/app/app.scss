@@ -14,3 +14,80 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.clear{clear: both;}
+
+
+#menuleft{
+    .header-md{
+      .toolbar-background-md{background: #fff;}
+      .title{
+        img{width: 60%; height: auto; max-width: 100%;}
+      }
+    }
+}
+
+#menuright{
+    // h2{ font-size: 14px;  }
+    img.avatar{
+      max-height: 80px;
+      margin: auto;
+    }
+  
+    ion-avatar{
+      text-align: center;vertical-align: middle;border-radius: 80px;border: 1px solid #da0000;font-size: 20px; color: rgba(255, 0, 0, 0.3);padding-top: 9px;
+      &.totalTickerCount {
+        padding: 0px;width: 100px;height: 100px;color: #da0000;font-size:50px; margin: 0 auto; border-width: 0; box-shadow: 0px 0px 50px rgba(218, 0, 0, 0.3); margin-top: 25px; font-weight: normal;
+        span{display: table-cell; width: 100px; height: 98px;vertical-align: middle;}
+      }
+      &.profileImage {padding-top: 0px;}
+    }
+  
+}
+
+.ion-page .scroll-content{background: #eef3f6;}
+
+.toolbar-md{
+  //.toolbar-background-md{background: #790000;}
+  .toolbar-background-md{border-bottom: 2px solid color($colors, primary); background: #fff;}
+  .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default{
+    color: #333;
+    &:hover:not(.disable-hover){color: #333; opacity: 0.8;}
+  }
+  .toolbar-title-md{color: #333;}
+}
+
+
+
+
+
+
+
+@media only screen and (min-width: 721px) {
+  .content .nmsList .item-md{width: 50%; float: left;}
+  .md .modal-wrapper{background: #fff;}
+}
+
+@media only screen and (min-width: 1025px) {
+  .md ion-menu#menuleft.menu-enabled{
+    display: block; right: auto; width: 312px;
+    .show-backdrop{display: none !important;}
+    .menu-inner{transform: translateX(0px) !important;}
+  }
+  .bar-button-menutoggle-md.menuIcon{display: none;}
+  page-list,
+  page-dashboard
+  {
+    &.ion-page{width: calc(100% - 306px); left: 306px;}
+  }
+  .ion-page{
+    //width: calc(100% - 306px); left: 306px;
+    //.tabtop .ion-page{width: 100%; left: 0;}
+    .nmsList .item-md{
+      width: calc(50% - 10px); background: #f7f7f7; padding: 0 5px; margin: 5px; min-height: 100px;
+      .item-inner{border: none;}
+    }
+  }
+
+}
+  

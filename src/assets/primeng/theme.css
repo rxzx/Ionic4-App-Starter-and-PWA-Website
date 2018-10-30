@@ -1153,25 +1153,32 @@ p-togglebutton.ng-dirty.ng-invalid .ui-button {
 .uiGridCss .ui-table .actionColHead, .ui-table .actionColText{width: 100px;}
 .uiGridCss .ui-table .ui-table-tbody>tr>td{color: #394e69; border: none;}
 .uiGridCss .ui-table .ui-table-tbody>tr>td.actionColText{text-align: right; padding: .25em 15px;}
+
 .uiGridCss .ui-table .ui-table-tbody>tr>td.actionColText .editBtn{color: #a1bad9; font-size: 16px;border: 1px solid #a1bad9;width: 30px;display: inline-block;text-align: center; border-radius: 3px; cursor: pointer;}
 .uiGridCss .ui-table .ui-table-tbody>tr>td.actionColText .editBtn i{vertical-align: middle; margin: 0px 0px 2px;}
 .uiGridCss .ui-table .ui-table-tbody>tr>td.actionColText .editBtn:hover{background: #a1bad9; color: #fff;}
+
+.uiGridCss .ui-table .ui-table-tbody>tr>td.actionColText .primaryBtn{color: #da0000; font-size: 16px;border: 1px solid #da0000;width: 30px;display: inline-block;text-align: center; border-radius: 3px; cursor: pointer;}
+.uiGridCss .ui-table .ui-table-tbody>tr>td.actionColText .primaryBtn i{vertical-align: middle; margin: 0px 0px 2px;}
+.uiGridCss .ui-table .ui-table-tbody>tr>td.actionColText .primaryBtn:hover{background: #da0000; color: #fff;}
+
+.uiGridCss .ui-table .ui-table-tbody>tr>td.actionColText .secondaryBtn{color: #32db64; font-size: 16px;border: 1px solid #32db64;width: 30px;display: inline-block;text-align: center; border-radius: 3px; cursor: pointer;}
+.uiGridCss .ui-table .ui-table-tbody>tr>td.actionColText .secondaryBtn i{vertical-align: middle; margin: 0px 0px 2px;}
+.uiGridCss .ui-table .ui-table-tbody>tr>td.actionColText .secondaryBtn:hover{background: #32db64; color: #fff;}
+
 .uiGridCss .ui-paginator a{color: #a1bad9;}
 .uiGridCss .ui-paginator .ui-paginator-page.ui-state-active{background: #a1bad9; border-color: #a1bad9;}
 .uiGridCss .ui-table-summary{color: #a0bbd8; text-align: right;}
 
 @media only screen and (max-width: 720px) {
   .uiGridCss .ui-table-summary{text-align: center;}
+  .uiGridCss .ui-paginator a{font-size: 16px;}
 }
 
 
 
-/***************************************************** Font icons ***********************************/
-
-
-/**************************************************** Font icons end ****************************/
-
 page-distributor .uiGridCss .ui-table-scrollable-body{max-height: calc(100vh - 200px) !important;}
+
 
 
 

@@ -23,9 +23,24 @@ module.exports = {
     dest: '{{BUILD}}'
   },
   copyPrimeng: {
-    src: ['{{ROOT}}/src/assets/primeng/theme.css', '{{ROOT}}/src/assets/primeng/primeng.min.css', '{{ROOT}}/node_modules/font-awesome/css/font-awesome.min.css'],
+    src: [
+      '{{ROOT}}/src/assets/primeng/theme.css', 
+      '{{ROOT}}/src/assets/primeng/primeng.min.css', 
+      '{{ROOT}}/node_modules/font-awesome/css/font-awesome.min.css'],
     // src: ['{{ROOT}}/node_modules/primeng/resources/themes/omega/theme.css', '{{ROOT}}/node_modules/primeng/resources/primeng.min.css', '{{ROOT}}/node_modules/font-awesome/css/font-awesome.min.css'],
     dest: '{{BUILD}}/assets/css'
+  },
+  copyPrimengFonts:{
+    src: [
+      '{{ROOT}}/src/assets/primeng/fonts/*', 
+    ],
+    dest: '{{BUILD}}/assets/css/fonts'
+  },
+  copyPrimengImages:{
+    src: [
+      '{{ROOT}}/src/assets/primeng/images/*', 
+    ],
+    dest: '{{BUILD}}/assets/css/images'
   },
   copyFontAwesome: {
     src: ["{{ROOT}}/node_modules/font-awesome/fonts/**/*"],
