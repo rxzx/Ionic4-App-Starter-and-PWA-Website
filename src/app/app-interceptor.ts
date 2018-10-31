@@ -1,14 +1,11 @@
 import { LoaderServiceProvider } from './../providers/loader-service';
-import { ApiStatuses } from './../shared/enums/index';
 import { UtilServiceProvider } from './../providers/util-service';
 import { StorageServiceProvider } from './../providers/storage-service';
 import { HttpClient, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { StorageKey, ErrorMessages } from '../shared';
-import { AlertController, ToastController } from 'ionic-angular';
+import { StorageKey, ErrorMessages, ApiStatuses } from '../shared';
 import { Observable } from 'rxjs';
 import { _throw } from 'rxjs/observable/throw';
-import { map, catchError, finalize } from 'rxjs/operators';
 
 /*
   Generated class for the InterceptorProvider provider.
@@ -24,15 +21,13 @@ export class AppInterceptorProvider {
     public http: HttpClient,
     public storage: StorageServiceProvider,
     public util: UtilServiceProvider,
-    public loader: LoaderServiceProvider,
-    private alertCtrl: AlertController,
-    private toastCtrl: ToastController
+    private loader: LoaderServiceProvider
   ) {
     this.statusMessages = {
       Error404: "Request not found",
       Error401: "Unauthorized Request",
-      Error500: "An Internal Server Error",
-      Error502: "Server has stopped",
+      Error500: "Request have an internal server Error",
+      Error502: "Bad Gateway error",
       ApiFailled: 'Some thing went wrong',
     };
     console.log('Hello InterceptorProvider Provider');
@@ -40,9 +35,9 @@ export class AppInterceptorProvider {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let token = this.storage.get(StorageKey.AccessToken);
+    this.loader.show();
 
     if (token) {
-      this.loader.show();
       let clone: HttpRequest<any>;
       clone = request.clone({
         setHeaders: {
@@ -55,50 +50,26 @@ export class AppInterceptorProvider {
     }
 
     return next.handle(request)
-      .do((event: HttpEvent<any>) => { }, (err: any) => {
+      .do((event: HttpEvent<any>) => {
+        // this.loader.hide();
+        this.loader.hide();
+      }, (err: any) => {
         if (err instanceof HttpErrorResponse) {
           // do error handling here
           if (err.status === 404) {
-            this.toast(this.statusMessages.Error404);
+            this.util.toast(ErrorMessages.Error404);
           } else if (err.status === 401) {
-            this.toast(this.statusMessages.Error404);
+            this.util.toast(ErrorMessages.Error404);
           } else if (err.status === 500) {
-            this.toast(this.statusMessages.Error500);
+            this.util.toast(ErrorMessages.Error500);
           } else if (err.status === 502) {
-            this.toast(this.statusMessages.Error502);
+            this.util.toast(ErrorMessages.Error502);
           } else {
-            this.toast(this.statusMessages.ApiFailled);
+            this.util.toast(ErrorMessages.ApiFailled);
           }
         }
-        this.loader.hide();
-
-        return;
+        return this.loader.hide();
       });
-
-
-    // .pipe(
-    //   map((event: any) => {
-
-    //     debugger;
-    //     return event;
-    //   }),
-    //   catchError(error => {
-    //     debugger;
-    //     return Observable.throw(error);
-    //   }),
-    //   finalize(() => {
-    //     debugger;
-    //     // this.status.setHttpStatus(false);
-    //   })
-    // );
-
-
-    // return next.handle(request) ;
-  }
-
-
-  toast(msg: string) {
-    return this.toastCtrl.create({ message: msg, duration: 3000, position: 'bottom' }).present();
   }
 
 }

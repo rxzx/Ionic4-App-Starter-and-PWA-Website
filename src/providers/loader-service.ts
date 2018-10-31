@@ -4,23 +4,30 @@ import { LoadingController } from 'ionic-angular';
 
 @Injectable()
 export class LoaderServiceProvider {
+    public loader: any;
 
     constructor(
         public loadingCtrl: LoadingController
     ) {
 
+
+
     }
-
-    loading: any = this.loadingCtrl.create({
-        content: "Please wait..."
-    })
-
+    
     show() {
-        this.loading.present();
+        this.loader = this.loadingCtrl.create({
+            dismissOnPageChange: true,
+            spinner: "bubbles",
+            content: "Please wait..."
+        });
+        this.loader.present();
     }
 
     hide() {
-        this.loading.dismiss();
+        this.loader.dismiss()
+            .catch((ex) => {
+                console.log(ex);
+            });;
     }
 
 
