@@ -17,8 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ApiModule } from './api.module';
 import { DashboardPage } from '../pages/private/dashboard/dashboard';
 import { ListPage } from '../pages/private/list/list';
-import { AppInterceptorProvider } from './app-interceptor';
 import { LoaderServiceProvider } from '../providers/loader-service';
+import { AppInterceptorProvider } from '../providers/app-interceptor';
 
 @NgModule({
   declarations: [
