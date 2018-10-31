@@ -29,9 +29,9 @@ export class AppInterceptorProvider {
     private toastCtrl: ToastController
   ) {
     this.statusMessages = {
-      Error404: "Api not found",
-      Error401: "You are not authorized",
-      Error500: "Error occur on server",
+      Error404: "Request not found",
+      Error401: "Unauthorized Request",
+      Error500: "An Internal Server Error",
       Error502: "Server has stopped",
       ApiFailled: 'Some thing went wrong',
     };
@@ -69,9 +69,10 @@ export class AppInterceptorProvider {
           } else {
             this.toast(this.statusMessages.ApiFailled);
           }
-
         }
         this.loader.hide();
+
+        return;
       });
 
 
