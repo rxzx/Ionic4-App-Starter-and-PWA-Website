@@ -1140,7 +1140,7 @@ p-togglebutton.ng-dirty.ng-invalid .ui-button {
 .uiGridCss .ui-widget-header{background: #fff; border: none;}
 .uiGridCss .ui-widget-header.ui-table-caption{padding: 0px 20px;}
 .uiGridCss .ui-helper-clearfix h2{color: #394e69; font-size: 19px !important;}
-.uiGridCss .ui-table .ui-table-thead>tr>th{background: #fff; color: #a0bbd8; border: none; border-top: 1px solid #eaeff5; border-bottom: 1px solid #eaeff5; padding: 15px .5em 10px;}
+.uiGridCss .ui-table .ui-table-thead>tr>th{background: #fff; color: #a0bbd8; border: none; border-top: 1px solid #eaeff5; border-bottom: 1px solid #eaeff5; padding: 15px .5em 10px;text-align: left;}
 .uiGridCss .ui-table .ui-sortable-column .ui-sortable-column-icon,
 .ui-table .ui-sortable-column:not(.ui-state-highlight):hover .ui-sortable-column-icon{color: #a0bbd8;}
 .ui-table .ui-sortable-column:not(.ui-state-highlight):hover{color: #a0bbd8; background: none; opacity: 0.8;}
