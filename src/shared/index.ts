@@ -8,7 +8,7 @@ export * from './enums';
 export * from './enums/storagekey';
 
 
-export interface ApiResponse{
+export class ApiResponse{
     isSuccess?: boolean;
     data?: any;
     message?:string;

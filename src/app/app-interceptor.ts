@@ -1,3 +1,4 @@
+import { ApiResponse } from './../shared/index';
 import { LoaderServiceProvider } from './../providers/loader-service';
 import { UtilServiceProvider } from './../providers/util-service';
 import { StorageServiceProvider } from './../providers/storage-service';
@@ -50,26 +51,37 @@ export class AppInterceptorProvider {
     }
 
     return next.handle(request)
-      .do((event: HttpEvent<any>) => {
-        // this.loader.hide();
+      .do((event: HttpEvent<any> | any) => {
+        if (event && event.body) {
+          let response: ApiResponse = new ApiResponse();
+          Object.assign(response, event.body);
+          if (response.isSuccess) {
+
+          } else {
+            // do error handling here
+            this.showApiError(response.statusCode);
+          }
+        }
         this.loader.hide();
       }, (err: any) => {
         if (err instanceof HttpErrorResponse) {
           // do error handling here
-          if (err.status === 404) {
-            this.util.toast(ErrorMessages.Error404);
-          } else if (err.status === 401) {
-            this.util.toast(ErrorMessages.Error404);
-          } else if (err.status === 500) {
-            this.util.toast(ErrorMessages.Error500);
-          } else if (err.status === 502) {
-            this.util.toast(ErrorMessages.Error502);
-          } else {
-            this.util.toast(ErrorMessages.ApiFailled);
-          }
+          this.showApiError(err.status);
         }
         return this.loader.hide();
       });
+  }
+
+  showApiError(status) {
+    if (status === 404) {
+      this.util.toast(ErrorMessages.Error404);
+    } else if (status === 401) {
+      this.util.toast(ErrorMessages.Error404);
+    } else if (status === 500) {
+      this.util.toast(ErrorMessages.Error500);
+    } else if (status === 502) {
+      this.util.toast(ErrorMessages.Error502);
+    }
   }
 
 }
