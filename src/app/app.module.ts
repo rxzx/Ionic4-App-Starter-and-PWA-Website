@@ -19,6 +19,7 @@ import { DashboardPage } from '../pages/private/dashboard/dashboard';
 import { ListPage } from '../pages/private/list/list';
 import { LoaderServiceProvider } from '../providers/loader-service';
 import { AppInterceptorProvider } from '../providers/app-interceptor';
+import { DataContext } from '../shared/store/datacontext.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { AppInterceptorProvider } from '../providers/app-interceptor';
     UtilServiceProvider,
     StorageServiceProvider,
     AuthServiceProvider,
-    LoaderServiceProvider
+    LoaderServiceProvider,
+    DataContext
   ]
 })
 export class AppModule { }
