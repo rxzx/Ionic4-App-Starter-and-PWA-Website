@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { DataContext } from '../../../shared/store/datacontext.service';
+import { User } from '../../../shared';
 
 /**
  * Generated class for the DashboardPage page.
@@ -15,10 +17,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DashboardPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public dataContext:DataContext) {
   }
 
   ionViewDidLoad() {
+    let users:User[] = [
+      { id:1, name:'rxzx1'},
+      { id:2, name:'rxzx2'},
+      { id:3, name:'rxzx3'}
+    ]
+
+    users.forEach(item =>{
+      this.dataContext.dc_user.update(item);
+    });
+
+
     console.log('ionViewDidLoad DashboardPage');
   }
 

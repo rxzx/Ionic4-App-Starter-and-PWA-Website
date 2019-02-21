@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpServiceProvider } from '../../../providers/http-service';
 import { AuthServiceProvider } from '../../../providers/auth-service';
+import { DataContext } from '../../../shared/store/datacontext.service';
 
 /**
  * Generated class for the ListPage page.
@@ -22,7 +23,8 @@ export class ListPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public http: HttpServiceProvider,
-    public authService: AuthServiceProvider
+    public authService: AuthServiceProvider,
+    public dataContext: DataContext
   ) {
     this.data = [];
   }
@@ -41,6 +43,7 @@ export class ListPage {
       // console.log(response);
       this.data = response.city;
     });
+    console.log(this.dataContext.dc_user.getAll());
   }
 
 }
